@@ -5,7 +5,7 @@
 ARG MATLAB_RELEASE=R2024a
 
 # Specify the extra products to install into the image. These products can either be toolboxes or support packages.
-ARG ADDITIONAL_PRODUCTS="Symbolic_Math_Toolbox Deep_Learning_Toolbox_Model_for_ResNet-50_Network"
+ARG ADDITIONAL_PRODUCTS="Symbolic_Math_Toolbox Deep_Learning_Toolbox_Model_for_ResNet-50_Network MATLAB_Support_Package_for_Quantum_Computing"
 
 # This Dockerfile builds on the Ubuntu-based mathworks/matlab image.
 # To check the available matlab images, see: https://hub.docker.com/r/mathworks/matlab
@@ -60,8 +60,8 @@ RUN wget -q https://www.mathworks.com/mpm/glnxa64/mpm \
 # in which case you should uncomment the following two lines.
 # If these lines are uncommented, $LICENSE_SERVER must be a valid license
 # server or browser mode will not start successfully.
-# ARG LICENSE_SERVER
-# ENV MLM_LICENSE_FILE=$LICENSE_SERVER
+ARG LICENSE_SERVER=27000@PubKeyServer7.asu.edu
+ENV MLM_LICENSE_FILE=$LICENSE_SERVER
 
 # The following environment variables allow MathWorks to understand how this MathWorks 
 # product is being used. This information helps us make MATLAB even better. 
